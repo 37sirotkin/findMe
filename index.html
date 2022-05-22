@@ -33,20 +33,23 @@
     <script>
         let qrcode = undefined;
         const params = parseURLParams(window.location.href);
+        console.log(params);
 
         if (params) insertValues();
 
         function insertValues() {
             document.getElementById('vkInput').value = params.v;
+            document.getElementById('instInput').value = params.i;
+            document.getElementById('ytInput').value = params.y;
         }
 
         function generateQRCode() {
             let qrValue = '';
 
             const instValue = document.getElementById('instInput').value;
-            const vkValue = `VK: ${document.getElementById('vkInput').value}`;
-            const ytValue = `Yotube: ${document.getElementById('ytInput').value}`;
-            qrValue = `https://37sirotkin.github.io/findMe?v=${vkValue}`
+            const vkValue = document.getElementById('vkInput').value;
+            const ytValue = document.getElementById('ytInput').value;
+            qrValue = `https://37sirotkin.github.io/findMe?v=${vkValue}&i=${instValue}&y=${ytValue}`
             if (qrcode === undefined) {
                 qrcode = new QRCode(document.getElementById('qrcode'), qrValue)
             } else {
