@@ -14,14 +14,17 @@
     <div>
         <label>Instagram</label>
         <input id='instInput' name='qrcode' type="text">
+        <button id="instBtn">LINK</button>
     </div>
     <div>
         <label>VK</label>
         <input id='vkInput' name='qrcode' type="text">
+        <button id="vkBtn">LINK</button>
     </div>
     <div>
         <label>Youtube</label>
         <input id='ytInput' name='qrcode' type="text">
+        <button id="ytBtn">LINK</button>
     </div>
     <br />
     <div>
@@ -41,6 +44,14 @@
             document.getElementById('vkInput').value = params.v;
             document.getElementById('instInput').value = params.i;
             document.getElementById('ytInput').value = params.y;
+        }
+
+        document.getElementById('instBtn').onclick = () => goToTheLink('instagram', document.getElementById('instInput').value)
+        document.getElementById('vkBtn').onclick = () => goToTheLink('vk', document.getElementById('vkInput').value)
+        document.getElementById('ytBtn').onclick = () => goToTheLink('youtube', document.getElementById('ytInput').value)
+
+        function goToTheLink(soc, name) {
+            document.location.href = `https://${soc}.com/${name}`;
         }
 
         function generateQRCode() {
