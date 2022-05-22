@@ -33,11 +33,9 @@
     <div>
         <button id="btnGenerate">Generate</button>
     </div>
-
-    HERE HERE HERE
     <script>
         let qrcode = undefined;
-        const params = parseURLParams(window.location.href);
+        const params = parseURLParams(document.location.href);
         console.log(params);
 
         if (params) insertValues();
