@@ -32,13 +32,21 @@
     </div>
     <script>
         let qrcode = undefined;
+        const params = parseURLParams(window.location.href);
+
+        if (params) insertValues();
+
+        function insertValues() {
+            document.getElementById('vkInput').value = params.v;
+        }
+
         function generateQRCode() {
             let qrValue = '';
 
             const instValue = document.getElementById('instInput').value;
             const vkValue = `VK: ${document.getElementById('vkInput').value}`;
             const ytValue = `Yotube: ${document.getElementById('ytInput').value}`;
-            qrValue = `instagram.com/${instValue}/`
+            qrValue = `https://37sirotkin.github.io/findMe?v=${vkValue}`
             if (qrcode === undefined) {
                 qrcode = new QRCode(document.getElementById('qrcode'), qrValue)
             } else {
@@ -46,6 +54,26 @@
                 qrcode.makeCode(qrValue)
             }
             console.log(qrValue);
+        }
+
+        function parseURLParams(url) {
+            var queryStart = url.indexOf("?") + 1,
+                queryEnd = url.indexOf("#") + 1 || url.length + 1,
+                query = url.slice(queryStart, queryEnd - 1),
+                pairs = query.replace(/\+/g, " ").split("&"),
+                parms = {}, i, n, v, nv;
+
+            if (query === url || query === "") return;
+
+            for (i = 0; i < pairs.length; i++) {
+                nv = pairs[i].split("=", 2);
+                n = decodeURIComponent(nv[0]);
+                v = decodeURIComponent(nv[1]);
+
+                if (!parms.hasOwnProperty(n)) parms[n] = [];
+                parms[n].push(nv.length === 2 ? v : null);
+            }
+            return parms;
         }
         document.getElementById('btnGenerate').onclick = generateQRCode;
     </script>
