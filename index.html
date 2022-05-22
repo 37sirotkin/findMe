@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="qrcode.min.js"></script>
+    <title>findMe</title>
+</head>
+
+<body>
+    <h1>QR Code Generator: </h1>
+    <div>
+        <label>Instagram</label>
+        <input id='instInput' name='qrcode' type="text">
+    </div>
+    <div>
+        <label>VK</label>
+        <input id='vkInput' name='qrcode' type="text">
+    </div>
+    <div>
+        <label>Youtube</label>
+        <input id='ytInput' name='qrcode' type="text">
+    </div>
+    <br />
+    <div>
+        <div id="qrcode"></div>
+    </div>
+    <div>
+        <button id="btnGenerate">Generate</button>
+    </div>
+    <script>
+        let qrcode = undefined;
+        function generateQRCode() {
+            let qrValue = '';
+
+            const instValue = document.getElementById('instInput').value;
+            const vkValue = `VK: ${document.getElementById('vkInput').value}`;
+            const ytValue = `Yotube: ${document.getElementById('ytInput').value}`;
+            qrValue = `instagram.com/${instValue}/`
+            if (qrcode === undefined) {
+                qrcode = new QRCode(document.getElementById('qrcode'), qrValue)
+            } else {
+                qrcode.clear();
+                qrcode.makeCode(qrValue)
+            }
+            console.log(qrValue);
+        }
+        document.getElementById('btnGenerate').onclick = generateQRCode;
+    </script>
+</body>
+
+</html>
