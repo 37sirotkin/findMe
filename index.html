@@ -38,7 +38,7 @@
         const params = undefined;
 
         function createParams() {
-            const params = parseURLParams(document.location.href);
+            params = parseURLParams(window.location.href);
         }
         createParams();
 
