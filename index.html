@@ -33,6 +33,8 @@
     <div>
         <button id="btnGenerate">Generate</button>
     </div>
+
+    HERE HERE HERE
     <script>
         let qrcode = undefined;
         const params = parseURLParams(window.location.href);
@@ -49,6 +51,7 @@
         document.getElementById('instBtn').onclick = () => goToTheLink('instagram', document.getElementById('instInput').value)
         document.getElementById('vkBtn').onclick = () => goToTheLink('vk', document.getElementById('vkInput').value)
         document.getElementById('ytBtn').onclick = () => goToTheLink('youtube', document.getElementById('ytInput').value)
+
 
         function goToTheLink(soc, name) {
             document.location.href = `https://${soc}.com/${name}`;
