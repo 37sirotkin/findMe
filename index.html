@@ -35,8 +35,12 @@
     </div>
     <script>
         let qrcode = undefined;
-        const params = parseURLParams(document.location.href);
-        console.log(params);
+        const params = undefined;
+
+        function createParams() {
+            const params = parseURLParams(document.location.href);
+        }
+        createParams();
 
         if (params) insertValues();
 
@@ -72,7 +76,7 @@
         }
 
         function parseURLParams(url) {
-            var queryStart = url.indexOf("?") + 1,
+            let queryStart = url.indexOf("?") + 1,
                 queryEnd = url.indexOf("#") + 1 || url.length + 1,
                 query = url.slice(queryStart, queryEnd - 1),
                 pairs = query.replace(/\+/g, " ").split("&"),
